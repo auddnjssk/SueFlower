@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+   <!-- 댓글 입력 -->
+  <mapper namespace="com.suflower.mapper.ReplyMapper">
+  	<insert id="insert">
+		insert into tbl_reply(replyNo,boardNo,replyContent,replyWriter)
+		values (seq_reply.nextval,#{boardNo,jdbcType=VARCHAR},#{replyContent,jdbcType=VARCHAR},#{replyWriter,jdbcType=VARCHAR})  
+  	</insert>
+  	
+  	<!-- 댓글 조회 -->
+  	<select id="read" resultType="com.suflower.domain.ReplyDTO">
+  		select * from tbl_reply where replyNo=#{replyNo,jdbcType=VARCHAR}
+  	</select>
+  	
+  	<!-- 댓글 삭제 -->
+  	<delete id="delete">
+  		delete from tbl_reply where replyNo = #{replyNo}
+  	</delete>
+  	
+  	<!-- 댓글 업데이트 -->
+  	<update id="update">
+  		update tbl_reply set replyContent = #{replyContent},replyupdatedate = sysdate where replyNo = #{replyNo}
+  	</update>
+  	
+  	<!-- 특정 게시물의 댓글을 가져옴 -->
+  	<select id="getListWithPaging" resultType="com.suflower.domain.ReplyDTO">
+  		select replyNo,boardNo,replyContent,replyWriter,replyDate,replyUpdateDate from tbl_reply
+  		where boardNo = #{boardNo}
+  		order by replyNo asc
+  	</select>
+  </mapper>
+  

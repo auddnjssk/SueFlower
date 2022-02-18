@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mynatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.suflower.mapper.CartMapper">
+	
+	<!-- 장바구니에 담기-->
+	<insert id="insert">
+		insert into tbl_cart(cartId, memberId, productId, reservationDate, quantity) 
+		values(seq_cart.nextval, #{memberId}, #{productId}, #{reservationDate}, #{quantity})
+	</insert>
+	
+	<!-- 장바구니 리스트 -->
+	<select id="getList" parameterType="String" resultType="com.suflower.domain.CartDTO">
+		
+		<!-- select cartId, c.productId, c.memberId, m.memberName, p.productName, c.quantity, 
+		productPrice, (productPrice*quantity) totalPrice
+		from tbl_member m, tbl_cart c, tbl_product p
+		where m.memberId=c.memberId and c.productId=p.productId and c.memberId='jaek1997'
+        order by cartId -->
+        
+        select cartId, c.productId, c.memberId, m.memberName, p.productName, c.quantity, 
+		c.reservationDate, productPrice, (productPrice*quantity) totalPrice, p.uploadfile
+		from tbl_member m, tbl_cart c, tbl_product p
+		where m.memberId=c.memberId and c.productId=p.productId and c.memberId=#{memberId}
+		
+        order by cartId
+	</select> 
+	<!-- 총 금액 -->
+	<select id="sumMoney" resultType="int">
+		select nvl(sum(productPrice*quantity),0)
+		from tbl_cart c, tbl_product p
+		where c.productId=p.productId and memberId=#{memberId}
+	</select>
+	
+	<!-- 제품별 금액 -->
+	<select id="cartMoney" resultType="com.suflower.domain.CartDTO">
+		select productName, sum(productPrice*quantity) totalPrice
+		from tbl_cart c, tbl_product p
+		where c.productId=p.productId
+		group by productName
+		order by productName
+	</select>
+	
+	<select id="countItems" resultType="int">
+		select count(*) totalCartItems
+		from tbl_cart
+		where memberId=#{memberId}
+	</select>
+	
+	<update id="updateCart">
+		update tbl_cart set quantity=#{quantity} where cartId=#{cartId}
+	</update>
+	
+	<delete id="delete">
+		delete from tbl_cart where cartId=#{cartId}
+	</delete>
+	
+	<delete id="deleteAll">
+		delete from tbl_cart where memberId=#{memberId}
+	</delete>
+	
+</mapper>
+	

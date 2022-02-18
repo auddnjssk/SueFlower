@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+
+.info{
+	align-content: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.info_tbform{
+	text-align: center;
+	top: -80px;
+	
+}
+
+.point_tbform{
+	text-align: center;
+	top: -80px;
+	
+}
+
+/* html, body{ */
+/* 	width:100%; */
+/* 	height: 100%; */
+/* 	text-align: center; */
+/* 	margin-left: auto; */
+/* 	margin-right: auto; */
+/* } */
+
+.sidebar2{
+	margin-left:-50px;
+	background:white;
+	width: 200px;
+	top: 20px;
+}
+
+.sidebar_nav{
+	width:200px;
+	height:0px;
+	font-size:20px;
+	left: 0;
+}
+
+.sidebar_blind{
+	list-style: none;
+	text-align: left;
+	text-indent: 10px;
+}
+
+
+
+/* update */
+.update_tb{
+	text-align: left;
+	position: relative;
+	margin: 0;
+	padding-left: 320px;
+	top: -210px;
+}
+.update_btn{
+	text-align: center;
+	top: 10px;
+}
+
+
+.info_table{
+	left: 0;
+}
+.info_tbv {
+    margin-left: 200px;
+}
+.point_tbv {
+	margin-left: 200px;
+}
+
+.update_button {
+    height: 50px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.addr_button {
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.info_tbv input{
+	text-align: center;
+}
+#header_info {
+	text-align: right;
+    padding: 0;
+}
+
+#header_span{
+	font-size: 25px;
+}
+
+.info_a{
+	width: 80%;
+	margin-left: 15%;
+}
+
+.info_f{
+	margin-left: 150px;
+}
+
+.form-control2{
+	    display: block;
+    width: 100%;
+    height: 48px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    
+}
+
+.form-control-user2 {
+    font-size: 13px;
+    border-radius: 10rem;
+    padding: 1.5rem 1rem;
+}
